@@ -16,3 +16,4 @@
 
 #set permission for firecracker binary executable
 chmod +x firecracker
+chmod 400 xenial.rootfs.id_rsa
