@@ -19,11 +19,11 @@ class Worker(Thread):
             if self.queue.empty():
                 continue
             id, cmd, output_file = self.queue.get()
-            print(" outfile", output_file)
+            print(" command", cmd)
             #print('\n')
             with open(output_file, "wb", 0) as out:
-                subprocess.Popen([cmd], stdout=out, stderr=subprocess.STDOUT)
-            print(out)
+                subprocess.Popen(["./gVisor-test-command.sh"], stdout=out, stderr=subprocess.STDOUT)
+           # print(out)
             try:
                 done = True
             finally:
@@ -31,9 +31,9 @@ class Worker(Thread):
 
 if __name__ == '__main__':
     threads = []
-    command = "ls"
-    #command = "docker run --rm -v /root/docker/task:/var/task lambci/lambda:python3.7 lambda_function.lambda_handler"
-    output_file = "network_test"
+    #command = "ls"
+    command = "docker run --rm -v /root/Secure-Serverless/docker/task:/var/task lambci/lambda:python2.7 io_lambda_function.lambda_handler"
+    output_file = "gvisor-test"
     q = Queue(maxsize=0)
     #set the total thread number
     total_thread = 2

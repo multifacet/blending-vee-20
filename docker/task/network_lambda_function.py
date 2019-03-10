@@ -20,7 +20,7 @@ def lambda_handler(event, context):
     context.log('Hello!')
     context.log('Hmmm, does not add newlines in 3.7?')
     context.log('\n')
-    thread_id = sys.argv[2]
+    #thread_id = sys.argv[2]
     print(sys.executable)
     print(sys.argv)
     print(os.getcwd())
