@@ -1,6 +1,6 @@
-###Steps to install SAM(Serverless Application Model) CLI on Linux
+### Steps to install SAM(Serverless Application Model) CLI on Linux
 * Install pip from [here](https://pip.pypa.io/en/stable/installing/).
-* Install AWS CLI from [here](https://docs.aws.amazon.com/cli/latest/userguide/).
+* Install AWS CLI from [here](https://docs.aws.amazon.com/cli/latest/userguide/install-bundle.html).
 * Install Docker from [here](https://www.docker.com/).
 * Install the AWS SAM CLI (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
   * On Linux using pip, make sure the python version is  2.7 or 3.6.:
@@ -23,4 +23,7 @@
      sam --version
     ```
   * Complete installation is [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-additional.html#serverless-sam-cli-install-using-pip).
-*Test example application (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-quick-start.html)
+* Test example application (https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-quick-start.html)
+
+
+sam local start-api --region us-east-1
