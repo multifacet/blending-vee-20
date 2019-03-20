@@ -104,14 +104,15 @@ EOF
 #}
 #EOF
 
+
 curl_put '/network-interfaces/enp1s0f0' <<EOF
 {
   "iface_id": "enp1s0f0",
   "guest_mac": "$FC_MAC",
-  "host_dev_name": "$TAP_DEV",
-  "state": "Attached"
+  "host_dev_name": "$TAP_DEV"
 }
 EOF
+
 
 curl_put '/actions' <<EOF
 {
@@ -119,3 +120,10 @@ curl_put '/actions' <<EOF
 }
 EOF
 
+
+#bring up networking in the guest VM
+#ssh -i xenial.rootfs.id_rsa root@$FC_ID
+#ip addr add $FC_ID/24 dev eth0
+#ifconfig eth0 up
+#ip route add default via $TAP_ID dev eth0
+#exit
