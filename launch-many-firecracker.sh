@@ -11,3 +11,10 @@ total="${1:-1}"
 for ((i=0; i<total; i++)); do
   ./start-firecracker.sh "$i"
 done
+
+
+#./cleanup-firecracker.sh
+
+
+
+

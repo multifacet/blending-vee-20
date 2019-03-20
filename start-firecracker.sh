@@ -6,7 +6,8 @@ DRIVE="$PWD/sb$VM_ID""xenial.rootfs.ext4"
 KERNEL="$PWD/vmlinux"
 TAP_DEV="tap$VM_ID"
 
-
+let num=10
+let start_tap=1
 KERNEL_BOOL_ARGS="console=ttyS0 reboot=k panic=1 pci=off"
 #KERNEL_BOOT_ARGS="panic=1 pci=off reboot=k tsc=reliable quiet 8250.nr_uarts=0 ipv6.disable=1 $R_INIT"
 #KERNEL_BOOT_ARGS="console=ttyS0 reboot=k panic=1 pci=off nomodules ipv6.disable=1 $R_INIT"
@@ -41,8 +42,8 @@ touch $logfile
 # Setup TAP device that uses proxy ARP
 MASK_LONG="255.255.255.0"
 #MASK_SHORT="/30"
-FC_IP="172.17.100.1"$VM_ID
-TAP_IP="172.17.100.1"
+FC_IP="172.17.100."$((num+VM_ID))
+TAP_IP="172.17.100."$((start_tap+VM_ID))
 
 
 FC_MAC="AA:FC:00:00:00:01"

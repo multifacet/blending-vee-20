@@ -24,4 +24,18 @@ sudo ./launch-gvisor-lambda.sh 10
 
 
 ### Launching microVMs with firecracker 
+* To run multiple microVMs via firecracker, start the *launch-many-firecracker.sh* scripts and pass the number of microVMs you want to start as an arguements.
+example:
+```bash
+sudo ./launch-many-firecracker.sh 10
+```
+This will spin 10 microVMs.
+
+*Run *cleanup.sh* after you are done.
+```bash
+sudo ./cleanup.sh
+```
+
+
+
 
