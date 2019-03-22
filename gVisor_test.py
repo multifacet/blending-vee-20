@@ -32,7 +32,7 @@ class Worker(Thread):
 if __name__ == '__main__':
     threads = []
     #command = "ls"
-    command = "docker run --rm -v /root/Secure-Serverless/docker/task:/var/task lambci/lambda:python2.7 io_lambda_function.lambda_handler"
+    #command = "docker run --rm -v /root/Secure-Serverless/docker/task:/var/task lambci/lambda:python2.7 io_lambda_function.lambda_handler"
     output_file = "gvisor-test"
     q = Queue(maxsize=0)
     #set the total thread number

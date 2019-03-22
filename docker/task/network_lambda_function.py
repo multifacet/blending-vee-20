@@ -17,29 +17,30 @@ import uuid
 # sudo docker run --runtime=runsc --rm -v  /root/docker/task:/var/task lambci/lambda:python2.7 network_lambda_function.lambda_handler 2 123.698796 5201 > out.txt
 
 def lambda_handler(event, context):
-    context.log('Hello!')
-    context.log('Hmmm, does not add newlines in 3.7?')
-    context.log('\n')
-    #thread_id = sys.argv[2]
-    print(sys.executable)
-    print(sys.argv)
-    print(os.getcwd())
-    print(__file__)
-    print(os.environ)
-    print(context.__dict__)
-    server_ip = "128.105.14.177"
+    # context.log('Hello!')
+    # context.log('Hmmm, does not add newlines in 3.7?')
+    # context.log('\n')
+    # #thread_id = sys.argv[2]
+    # print(sys.executable)
+    # print(sys.argv)
+    # print(os.getcwd())
+    # print(__file__)
+    # print(os.environ)
+    # print(context.__dict__)
+    server_ip = "128.104.222.238"
     port = 5201
 
     network = network_test(server_ip, port)
     return {
-        "executable": str(sys.executable),
-        "sys.argv": str(sys.argv),
-        "os.getcwd": str(os.getcwd()),
-        "__file__": str(__file__),
-        "os.environ": str(os.environ),
-        "context.__dict__": str(context.__dict__),
-        "ps aux": str(subprocess.check_output(['ps', 'aux'])),
-        "event": event
+        "network": network
+        # "executable": str(sys.executable),
+        # "sys.argv": str(sys.argv),
+        # "os.getcwd": str(os.getcwd()),
+        # "__file__": str(__file__),
+        # "os.environ": str(os.environ),
+        # "context.__dict__": str(context.__dict__),
+        # "ps aux": str(subprocess.check_output(['ps', 'aux'])),
+        # "event": event
     }
 
 
@@ -54,7 +55,7 @@ def network_test(server_ip, port):
             throughput in bits, mean rtt, min rtt, max rtt
             (see doc of iperf)
     """
-    sp = subprocess.Popen(["./iperf3",
+    sp = subprocess.Popen(["iperf3",
                            "-c",
                            server_ip,
                            "-p",
