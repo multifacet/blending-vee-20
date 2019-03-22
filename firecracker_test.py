@@ -19,10 +19,12 @@ class Worker(Thread):
             if self.queue.empty():
                 continue
             id, cmd, output_file = self.queue.get()
-            print(" command", cmd)
-            #print('\n')
+            num = 10 + id
+            vm_ip = "172.17.100."+str(num)
+            
+            print(command)
             with open(output_file, "wb", 0) as out:
-                subprocess.Popen(["./gVisor-test-command.sh"], stdout=out, stderr=subprocess.STDOUT)
+                subprocess.Popen(["./firecracker-test-command.sh", str(vm_ip)], stdout=out, stderr=subprocess.STDOUT)
            # print(out)
             try:
                 done = True
@@ -33,7 +35,7 @@ if __name__ == '__main__':
     threads = []
     #command = "ls"
     command = "docker run --rm -v /root/Secure-Serverless/docker/task:/var/task lambci/lambda:python2.7 io_lambda_function.lambda_handler"
-    output_file = "gvisor-test"
+    output_file = "firecracker-test"
     q = Queue(maxsize=0)
     #set the total thread number
     total_thread = 2
@@ -41,7 +43,7 @@ if __name__ == '__main__':
     for i in range(total_thread):
         threads.append(command)
 
-    print(threads)
+    #print(threads)
     for i in range(total_thread):
         worker = Worker(q)
         worker.daemon = True  # setting threads as "daemon" allows main program to
