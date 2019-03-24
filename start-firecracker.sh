@@ -1,7 +1,7 @@
 #!/bin/bash -e
 VM_ID="${1:-0}" # Default to vm_id=0
 
-DRIVE="$PWD/sb$VM_ID""xenial.rootfs.ext4"
+DRIVE="$PWD/sb$VM_ID""custom.xenial.rootfs.ext4"
 
 KERNEL="$PWD/vmlinux"
 TAP_DEV="tap$VM_ID"
