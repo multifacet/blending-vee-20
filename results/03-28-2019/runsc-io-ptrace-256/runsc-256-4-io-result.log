@@ -1,0 +1,28 @@
+
+==========Thread1========WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+START RequestId: 372aff2d-fe13-4667-9f9f-0ba59e1de159 Version: $LATEST
+END RequestId: 372aff2d-fe13-4667-9f9f-0ba59e1de159
+REPORT RequestId: 372aff2d-fe13-4667-9f9f-0ba59e1de159 Duration: 9356 ms Billed Duration: 9400 ms Memory Size: 256 MB Max Memory Used: 119 MB
+
+{"ioload": "1.04918, 48.8 MB/s;0.658627, 77.7 MB/s;1.00889, 50.7 MB/s;1.0968, 46.7 MB/s;1.09669, 46.7 MB/s;1.14505, 44.7 MB/s;0.756461, 67.7 MB/s;0.634607, 80.7 MB/s;0.308902, 166 MB/s;1.04504, 49.0 MB/s"}
+
+==========Thread2========WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+START RequestId: 022f6323-8765-48df-8524-d3ad73fa1ba2 Version: $LATEST
+END RequestId: 022f6323-8765-48df-8524-d3ad73fa1ba2
+REPORT RequestId: 022f6323-8765-48df-8524-d3ad73fa1ba2 Duration: 10863 ms Billed Duration: 10900 ms Memory Size: 256 MB Max Memory Used: 120 MB
+
+{"ioload": "1.22378, 41.8 MB/s;0.969367, 52.8 MB/s;1.03623, 49.4 MB/s;0.889296, 57.6 MB/s;0.892731, 57.4 MB/s;1.11817, 45.8 MB/s;0.999036, 51.2 MB/s;1.24263, 41.2 MB/s;1.30081, 39.4 MB/s;0.647533, 79.1 MB/s"}
+
+==========Thread3========WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+START RequestId: 5869d408-b534-466c-8c42-85fd1bcaff91 Version: $LATEST
+END RequestId: 5869d408-b534-466c-8c42-85fd1bcaff91
+REPORT RequestId: 5869d408-b534-466c-8c42-85fd1bcaff91 Duration: 10962 ms Billed Duration: 11000 ms Memory Size: 256 MB Max Memory Used: 119 MB
+
+{"ioload": "1.15838, 44.2 MB/s;0.881015, 58.1 MB/s;1.08855, 47.0 MB/s;0.871472, 58.8 MB/s;1.268, 40.4 MB/s;0.57052, 89.7 MB/s;1.13295, 45.2 MB/s;1.27438, 40.2 MB/s;1.35159, 37.9 MB/s;0.824122, 62.1 MB/s"}
+
+==========Thread4========WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+START RequestId: 25e11fb8-a40d-470c-8738-91c1670288c2 Version: $LATEST
+END RequestId: 25e11fb8-a40d-470c-8738-91c1670288c2
+REPORT RequestId: 25e11fb8-a40d-470c-8738-91c1670288c2 Duration: 10061 ms Billed Duration: 10100 ms Memory Size: 256 MB Max Memory Used: 120 MB
+
+{"ioload": "0.945042, 54.2 MB/s;0.975633, 52.5 MB/s;0.563757, 90.8 MB/s;1.02099, 50.1 MB/s;1.15593, 44.3 MB/s;1.05954, 48.3 MB/s;1.13195, 45.2 MB/s;0.853225, 60.0 MB/s;0.51838, 98.8 MB/s;1.29629, 39.5 MB/s"}
