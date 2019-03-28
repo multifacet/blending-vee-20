@@ -41,7 +41,7 @@ def lambda_handler(event, context):
     # t, s = buf[-2], buf[-1]
     # t = t.split(" ")[1]
     # # s = s.split(" ")[1]
-    ioload_result = ioload_test(3, "8kB", 1000)
+    ioload_result = ioload_test(10, "512kB", 100)
 
     return {
         "ioload": ioload_result
@@ -73,7 +73,8 @@ def ioload_test(rd, size, cnt):
     for i in xrange(rd):
         buf = ioload(size, cnt)
         bufs.append(buf)
-return ";".join(bufs)
+    
+    return ";".join(bufs)
 
 def ioload(size, cnt):
     """ One round of IO throughput test """
