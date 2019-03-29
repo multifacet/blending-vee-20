@@ -36,7 +36,7 @@ if __name__ == '__main__':
     output_file = "gvisor-test"
     q = Queue(maxsize=0)
     #set the total thread number
-    total_thread = 20
+    total_thread = 10
 
     for i in range(total_thread):
         threads.append(command)
