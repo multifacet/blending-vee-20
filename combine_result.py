@@ -4,9 +4,9 @@ import os
 
 files = glob.glob( '*.txt' )
 count = 1
-with open( 'runc-128-20-io-result.log', 'w' ) as result:
+with open( 'runsc-kvm-256-10-io-result.log', 'w' ) as result:
     for file in files:
-    	result.write("==========Thread" + str(count)+"========")
+    	result.write("\n==========Thread" + str(count)+"========")
         for line in open( file, 'r' ):
             result.write( line )
 
