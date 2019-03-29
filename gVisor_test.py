@@ -22,7 +22,7 @@ class Worker(Thread):
             print(" command", cmd)
             #print('\n')
             with open(output_file, "wb", 0) as out:
-                subprocess.Popen(["./gVisor-test-command.sh"], stdout=out, stderr=subprocess.STDOUT)
+                subprocess.Popen(["./gVisor-test-command.sh", id], stdout=out, stderr=subprocess.STDOUT)
            # print(out)
             try:
                 done = True

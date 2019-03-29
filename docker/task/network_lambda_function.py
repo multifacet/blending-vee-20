@@ -27,8 +27,11 @@ def lambda_handler(event, context):
     # print(__file__)
     # print(os.environ)
     # print(context.__dict__)
+    thread_id = sys.argv[2]
     server_ip = "128.104.222.238"
-    port = 5201
+    port = 5201 + thread_id
+
+    print(port)
 
     network = network_test(server_ip, port)
     return {
