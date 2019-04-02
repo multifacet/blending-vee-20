@@ -1,0 +1,16 @@
+
+==========Thread1========WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+START RequestId: 05067c82-e6c0-419a-8b09-65d8068ea37d Version: $LATEST
+5202
+END RequestId: 05067c82-e6c0-419a-8b09-65d8068ea37d
+REPORT RequestId: 05067c82-e6c0-419a-8b09-65d8068ea37d Duration: 10352 ms Billed Duration: 10400 ms Memory Size: 256 MB Max Memory Used: 119 MB
+
+{"network": "280820936.883,0,0,0"}
+
+==========Thread2========WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+START RequestId: 687016a0-d2e8-46a0-99e4-df78a9ec3918 Version: $LATEST
+5201
+END RequestId: 687016a0-d2e8-46a0-99e4-df78a9ec3918
+REPORT RequestId: 687016a0-d2e8-46a0-99e4-df78a9ec3918 Duration: 10276 ms Billed Duration: 10300 ms Memory Size: 256 MB Max Memory Used: 121 MB
+
+{"network": "276175739.283,0,0,0"}

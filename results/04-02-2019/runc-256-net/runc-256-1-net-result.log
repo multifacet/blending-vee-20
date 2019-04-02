@@ -1,0 +1,8 @@
+
+==========Thread1========WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
+START RequestId: 690ef25c-7e8e-49ad-98f9-d50bd983c16a Version: $LATEST
+5201
+END RequestId: 690ef25c-7e8e-49ad-98f9-d50bd983c16a
+REPORT RequestId: 690ef25c-7e8e-49ad-98f9-d50bd983c16a Duration: 10390 ms Billed Duration: 10400 ms Memory Size: 256 MB Max Memory Used: 14 MB
+
+{"network": "944682387.462,5835,4436,7200"}
