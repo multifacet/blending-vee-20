@@ -1,0 +1,123 @@
+
+curl --unix-socket /tmp/firecracker.socket -i  \
+    -X PUT 'http://localhost/machine-config' \
+    -H 'Accept: application/json'            \
+    -H 'Content-Type: application/json'      \
+    -d '{
+        "vcpu_count": 1,
+        "mem_size_mib": 1024
+    }'
+
+
+
+vCPUs      Network
+1          
+
+localhost:~# iperf3 -c 128.104.222.172
+[   30.625552] random: iperf3: uninitialized urandom read (37 bytes read)
+Connecting to host 128.104.222.172, port 5201
+[   30.672641] random: iperf3: uninitialized urandom read (131072 bytes read)
+[  5] local 172.17.100.10 port 39074 connected to 128.104.222.172 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  1.89 GBytes  16.3 Gbits/sec    0   2.22 MBytes       
+[   31.750491] random: crng init done
+[  5]   1.00-2.00   sec  1.98 GBytes  17.0 Gbits/sec    0   3.03 MBytes       
+[  5]   2.00-3.00   sec  2.00 GBytes  17.2 Gbits/sec    0   3.03 MBytes       
+[  5]   3.00-4.00   sec  2.02 GBytes  17.4 Gbits/sec    0   3.03 MBytes       
+[  5]   4.00-5.00   sec  2.05 GBytes  17.6 Gbits/sec    0   3.03 MBytes       
+[  5]   5.00-6.00   sec  1.99 GBytes  17.1 Gbits/sec    0   3.03 MBytes       
+[  5]   6.00-7.00   sec  2.00 GBytes  17.2 Gbits/sec    0   3.03 MBytes       
+[  5]   7.00-8.00   sec  2.10 GBytes  18.0 Gbits/sec    0   3.03 MBytes       
+[  5]   8.00-9.00   sec  1.89 GBytes  16.2 Gbits/sec    0   3.03 MBytes       
+[  5]   9.00-10.00  sec  1.84 GBytes  15.8 Gbits/sec    0   3.03 MBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  19.8 GBytes  17.0 Gbits/sec    0             sender
+[  5]   0.00-10.00  sec  19.8 GBytes  17.0 Gbits/sec                  receiver
+
+iperf Done.
+
+
+
+
+---------------------------------------------------------------------------------------
+2 vCPUs, 1024 RAM
+
+
+
+localhost:~# iperf3 -c 128.104.222.172
+[   67.970348] random: iperf3: uninitialized urandom read (37 bytes read)
+Connecting to host 128.104.222.172, port 5201
+[   68.015602] random: iperf3: uninitialized urandom read (131072 bytes read)
+[  5] local 172.17.100.10 port 56286 connected to 128.104.222.172 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  2.32 GBytes  19.9 Gbits/sec    0   3.04 MBytes       
+[   69.365053] random: crng init done
+[  5]   1.00-2.00   sec  1.65 GBytes  14.2 Gbits/sec    0   3.04 MBytes       
+[  5]   2.00-3.00   sec  1.82 GBytes  15.6 Gbits/sec    0   3.04 MBytes       
+[  5]   3.00-4.00   sec  1.74 GBytes  14.9 Gbits/sec    0   3.04 MBytes       
+[  5]   4.00-5.00   sec  1.68 GBytes  14.5 Gbits/sec    0   3.04 MBytes       
+[  5]   5.00-6.00   sec  1.69 GBytes  14.5 Gbits/sec    0   3.04 MBytes       
+[  5]   6.00-7.00   sec  1.69 GBytes  14.6 Gbits/sec    0   3.04 MBytes       
+[  5]   7.00-8.00   sec  1.68 GBytes  14.4 Gbits/sec    0   3.04 MBytes       
+[  5]   8.00-9.00   sec  1.70 GBytes  14.6 Gbits/sec    0   3.04 MBytes       
+[  5]   9.00-10.00  sec  1.69 GBytes  14.5 Gbits/sec    0   3.04 MBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  17.7 GBytes  15.2 Gbits/sec    0             sender
+[  5]   0.00-10.00  sec  17.7 GBytes  15.2 Gbits/sec                  receiver
+
+iperf Done.
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+
+
+4 vCPUs
+
+
+localhost:~# ping 1.1.1.1 -c 3
+PING 1.1.1.1 (1.1.1.1): 56 data bytes
+64 bytes from 1.1.1.1: seq=0 ttl=59 time=12.885 ms
+64 bytes from 1.1.1.1: seq=1 ttl=59 time=12.705 ms
+64 bytes from 1.1.1.1: seq=2 ttl=59 time=12.770 ms
+
+--- 1.1.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 12.705/12.786/12.885 ms
+localhost:~# iperf3 -c 128.104.222.172
+[   42.889713] random: iperf3: uninitialized urandom read (37 bytes read)
+Connecting to host 128.104.222.172, port 5201
+[   42.937076] random: iperf3: uninitialized urandom read (131072 bytes read)
+[  5] local 172.17.100.10 port 54460 connected to 128.104.222.172 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  1.93 GBytes  16.5 Gbits/sec    0   3.14 MBytes       
+[   44.237136] random: crng init done
+[  5]   1.00-2.00   sec  2.01 GBytes  17.3 Gbits/sec    0   3.14 MBytes       
+[  5]   2.00-3.00   sec  1.95 GBytes  16.8 Gbits/sec    0   3.14 MBytes       
+[  5]   3.00-4.00   sec  2.06 GBytes  17.7 Gbits/sec    0   3.14 MBytes       
+[  5]   4.00-5.00   sec  2.10 GBytes  18.0 Gbits/sec    0   3.14 MBytes       
+[  5]   5.00-6.00   sec  2.01 GBytes  17.2 Gbits/sec    0   3.14 MBytes       
+[  5]   6.00-7.00   sec  2.04 GBytes  17.5 Gbits/sec    0   3.14 MBytes       
+[  5]   7.00-8.00   sec  1.92 GBytes  16.5 Gbits/sec    0   3.14 MBytes       
+[  5]   8.00-9.00   sec  2.08 GBytes  17.9 Gbits/sec    0   3.14 MBytes       
+[  5]   9.00-10.00  sec  1.94 GBytes  16.7 Gbits/sec    0   3.14 MBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  20.0 GBytes  17.2 Gbits/sec    0             sender
+[  5]   0.00-10.00  sec  20.0 GBytes  17.2 Gbits/sec                  receiver
+
+iperf Done.
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+Installing SAM: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
+
+Step 1:
+1. Install docker
+2. Install AWS [https://docs.aws.amazon.com/cli/latest/userguide/install-bundle.html]
+
+   curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+   unzip awscli-bundle.zip
+   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws

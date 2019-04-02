@@ -1,0 +1,89 @@
+----Enabling Networking on Firecraker--------[https://github.com/firecracker-microvm/firecracker/issues/711]
+
+
+
+https://github.com/firecracker-microvm/firecracker/blob/master/docs/network-setup.md
+
+
+
+1. https://askubuntu.com/questions/889880/cannot-find-device-eth0, check this file
+2. Check the default ethernet
+3. perform the following
+
+sudo ip tuntap add tap0 mode tap # user $(id -u) group $(id -g)
+sudo ip addr add 172.17.100.1/24 dev tap0
+sudo ip link set tap0 up
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+sudo iptables -t nat -A POSTROUTING -o $WIRELESS_DEVICE_NAME -j MASQUERADE
+sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i tap0 -o $WIRELESS_DEVICE_NAME -j ACCEPT
+
+
+curl -X PUT \
+  --unix-socket /tmp/firecracker.socket \
+  http://localhost/network-interfaces/enp1s0f0 \
+  -H accept:application/json \
+  -H content-type:application/json \
+  -d '{
+      "iface_id": "enp1s0f0",
+      "guest_mac": "AA:FC:00:00:00:01",
+      "host_dev_name": "tap0"
+    }'
+
+4. On the VM
+ip addr add 172.17.100.10/24 dev eth0
+ifconfig eth0 up
+ip route add default via 172.17.100.1 dev eth0
+ping 1.1.1.1 -c 3
+
+5. After use:
+sudo iptables -F
+sudo ip link del tap0
+sudo sh -c "echo 0 > /proc/sys/net/ipv4/ip_forward" # usually the default
+
+
+curl --unix-socket /tmp/firecracker.socket -i \
+    -X PUT 'http://localhost/drives/rootfs' \
+    -H 'Accept: application/json'           \
+    -H 'Content-Type: application/json'     \
+    -d '{
+        "drive_id": "rootfs",
+        "path_on_host": "./xenial.rootfs.ext4",
+        "is_root_device": true,
+        "is_read_only": false
+    }'
+
+
+
+ssh -i xenial.rootfs.id_rsa root@172.17.100.10
+https://software.es.net/iperf/invoking.html
+
+
+
+
+for making ip static
+root@node-0:/proc/102# cat /proc/sys/kernel/shmall
+18446744073692774399
+root@node-0:/proc/102# cat /etc/network/interfaces
+# ifupdown has been replaced by netplan(5) on this system.  See
+# /etc/netplan for current configuration.
+# To re-enable ifupdown on this system, you can run:
+#    sudo apt install ifupdown
+auto lo
+iface lo inet loopback
+
+allow-hotplug enp1s0f0
+iface enp1s0f0 inet static
+  address 192.168.56.5
+  netmask 255.255.255.0
+  gateway 192.168.56.1
+
+
+on guest, enable dns
+sudo vim /etc/resolv.conf
+
+nameserver gateway_ip_address
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+
+

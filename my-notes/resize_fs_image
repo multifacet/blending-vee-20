@@ -1,0 +1,21 @@
+cp xenial.rootfs.ext4 custom.xenial.rootfs.ext4
+mkdir /tmp/my-rootfs
+sudo dd if=/dev/zero bs=1M count=2048 >> custom.xenial.rootfs.ext4
+mount custom.xenial.rootfs.ext4 /tmp/my-rootfs
+df
+resize2fs /dev/loop0
+umount /tmp/my-rootfs
+
+
+
+
+
+{  
+        "userns-remap": "dockremap",
+	"debug": true,
+	"experimental": false,
+        "live-restore": true,
+        "ipv6": false,
+        "icc": false,
+        "no-new-privileges": false
+}
