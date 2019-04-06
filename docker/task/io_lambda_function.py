@@ -1,8 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import print_function
 import os
 import sys
 import subprocess
-
+import time
+import decimal
 # Just a test lambda, run with:
 # docker run --rm -v "$PWD":/var/task lambci/lambda:python2.7
 # OR
@@ -42,7 +45,7 @@ def lambda_handler(event, context):
     # t, s = buf[-2], buf[-1]
     # t = t.split(" ")[1]
     # # s = s.split(" ")[1]
-    ioload_result = ioload_test(10, "512kB", 1000)
+    ioload_result = ioload_test(10, "512kB", 100)
 
     return {
         "ioload": ioload_result
@@ -55,6 +58,18 @@ def lambda_handler(event, context):
         # "ps aux": str(subprocess.check_output(['ps', 'aux'])),
         # "event": event
     }
+
+
+
+def fstr(f):
+    """
+    Convert a float number to string
+    """
+
+    ctx = decimal.Context()
+    ctx.prec = 20
+    d1 = ctx.create_decimal(repr(f))
+    return format(d1, 'f')
 
 
 
@@ -80,6 +95,8 @@ def ioload_test(rd, size, cnt):
 def ioload(size, cnt):
     """ One round of IO throughput test """
 
+    
+    st = time.time() * 1000
     proc = subprocess.Popen(["dd",
                              "if=/dev/urandom",
                              "of=/tmp/ioload.log",
@@ -88,9 +105,12 @@ def ioload(size, cnt):
                              "conv=fdatasync",
                              "oflag=dsync"],
                             stderr=subprocess.PIPE)
+    
+    ed = time.time() * 1000
     out, err = proc.communicate()
     buf = err.split("\n")[-2].split(",")
     t, s = buf[-2], buf[-1]
     t = t.split(" ")[1]
+    cpu = fstr(float(ed) - float(st))
     # s = s.split(" ")[1]
-    return "%s,%s" % (t, s)
+    return "%s,%s,%s" % (t, s, cpu)
