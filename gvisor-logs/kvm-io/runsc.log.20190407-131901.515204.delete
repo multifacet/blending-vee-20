@@ -1,0 +1,33 @@
+I0407 13:19:01.515241    2529 x:0] ***************************
+I0407 13:19:01.515291    2529 x:0] Args: [/usr/local/bin/runsc --debug-log=/tmp/runsc/ --debug --strace --platform=kvm --root /var/run/docker/runtime-runsc/moby --log /run/containerd/io.containerd.runtime.v1.linux/moby/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654/log.json --log-format json delete c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654]
+I0407 13:19:01.515312    2529 x:0] Version 252f877f3d0c
+I0407 13:19:01.515320    2529 x:0] PID: 2529
+I0407 13:19:01.515329    2529 x:0] UID: 0, GID: 0
+I0407 13:19:01.515335    2529 x:0] Configuration:
+I0407 13:19:01.515341    2529 x:0] 		RootDir: /var/run/docker/runtime-runsc/moby
+I0407 13:19:01.515348    2529 x:0] 		Platform: kvm
+I0407 13:19:01.515359    2529 x:0] 		FileAccess: exclusive, overlay: false
+I0407 13:19:01.515367    2529 x:0] 		Network: sandbox, logging: false
+I0407 13:19:01.515376    2529 x:0] 		Strace: true, max size: 1024, syscalls: []
+I0407 13:19:01.515383    2529 x:0] ***************************
+D0407 13:19:01.515391    2529 x:0] Load container "/var/run/docker/runtime-runsc/moby" "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516664    2529 x:0] Destroy container "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516680    2529 x:0] Destroying container "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516692    2529 x:0] Destroying root container "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654" by destroying sandbox
+D0407 13:19:01.516702    2529 x:0] Destroy sandbox "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516710    2529 x:0] Killing sandbox "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516733    2529 x:0] Killing gofer for container "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654", PID: 2388
+W0407 13:19:01.516745    2529 x:0] Error sending signal 9 to gofer 2388: no such process
+D0407 13:19:01.516760    2529 x:0] Deleting cgroup "/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516771    2529 x:0] Removing cgroup controller for key="blkio" path="/sys/fs/cgroup/blkio/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516824    2529 x:0] Removing cgroup controller for key="memory" path="/sys/fs/cgroup/memory/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516866    2529 x:0] Removing cgroup controller for key="net_cls" path="/sys/fs/cgroup/net_cls/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516894    2529 x:0] Removing cgroup controller for key="freezer" path="/sys/fs/cgroup/freezer/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516919    2529 x:0] Removing cgroup controller for key="perf_event" path="/sys/fs/cgroup/perf_event/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516945    2529 x:0] Removing cgroup controller for key="cpu" path="/sys/fs/cgroup/cpu/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.516975    2529 x:0] Removing cgroup controller for key="cpuset" path="/sys/fs/cgroup/cpuset/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.517006    2529 x:0] Removing cgroup controller for key="net_prio" path="/sys/fs/cgroup/net_prio/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.517027    2529 x:0] Removing cgroup controller for key="devices" path="/sys/fs/cgroup/devices/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.517050    2529 x:0] Removing cgroup controller for key="pids" path="/sys/fs/cgroup/pids/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:19:01.517074    2529 x:0] Removing cgroup controller for key="systemd" path="/sys/fs/cgroup/systemd/docker/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+I0407 13:19:01.517172    2529 x:0] Exiting with status: 0

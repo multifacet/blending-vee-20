@@ -1,0 +1,16 @@
+I0407 13:18:56.615595    2431 x:0] ***************************
+I0407 13:18:56.615650    2431 x:0] Args: [/usr/local/bin/runsc --debug-log=/tmp/runsc/ --debug --strace --platform=kvm --root /var/run/docker/runtime-runsc/moby --log /run/containerd/io.containerd.runtime.v1.linux/moby/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654/log.json --log-format json state c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654]
+I0407 13:18:56.615677    2431 x:0] Version 252f877f3d0c
+I0407 13:18:56.615685    2431 x:0] PID: 2431
+I0407 13:18:56.615694    2431 x:0] UID: 0, GID: 0
+I0407 13:18:56.615701    2431 x:0] Configuration:
+I0407 13:18:56.615708    2431 x:0] 		RootDir: /var/run/docker/runtime-runsc/moby
+I0407 13:18:56.615714    2431 x:0] 		Platform: kvm
+I0407 13:18:56.615726    2431 x:0] 		FileAccess: exclusive, overlay: false
+I0407 13:18:56.615734    2431 x:0] 		Network: sandbox, logging: false
+I0407 13:18:56.615759    2431 x:0] 		Strace: true, max size: 1024, syscalls: []
+I0407 13:18:56.615766    2431 x:0] ***************************
+D0407 13:18:56.615775    2431 x:0] Load container "/var/run/docker/runtime-runsc/moby" "c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654"
+D0407 13:18:56.617051    2431 x:0] Returning state for container &{ID:c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654 Spec:0xc00008f570 BundleDir:/run/containerd/io.containerd.runtime.v1.linux/moby/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654 Root:/var/run/docker/runtime-runsc/moby/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654 CreatedAt:2019-04-07 13:18:56.540140007 -0600 MDT Owner: ConsoleSocket: Status:created GoferPid:2388 goferIsChild:false Sandbox:0xc0001d70b0}
+D0407 13:18:56.617086    2431 x:0] State: {Version:1.0.1-dev ID:c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654 Status:created Pid:2396 Bundle:/run/containerd/io.containerd.runtime.v1.linux/moby/c2bdd13858652712dc4877e801229a8e77051391bc9d65ef44e2b3feb46c9654 Annotations:map[]}
+I0407 13:18:56.617136    2431 x:0] Exiting with status: 0

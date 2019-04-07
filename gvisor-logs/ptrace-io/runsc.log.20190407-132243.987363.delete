@@ -1,0 +1,32 @@
+I0407 13:22:43.987407    3656 x:0] ***************************
+I0407 13:22:43.987467    3656 x:0] Args: [/usr/local/bin/runsc --debug-log=/tmp/runsc/ --debug --strace --root /var/run/docker/runtime-runsc/moby --log /run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498/log.json --log-format json delete 70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498]
+I0407 13:22:43.987491    3656 x:0] Version 252f877f3d0c
+I0407 13:22:43.987500    3656 x:0] PID: 3656
+I0407 13:22:43.987510    3656 x:0] UID: 0, GID: 0
+I0407 13:22:43.987517    3656 x:0] Configuration:
+I0407 13:22:43.987541    3656 x:0] 		RootDir: /var/run/docker/runtime-runsc/moby
+I0407 13:22:43.987563    3656 x:0] 		Platform: ptrace
+I0407 13:22:43.987573    3656 x:0] 		FileAccess: exclusive, overlay: false
+I0407 13:22:43.987580    3656 x:0] 		Network: sandbox, logging: false
+I0407 13:22:43.987589    3656 x:0] 		Strace: true, max size: 1024, syscalls: []
+I0407 13:22:43.987595    3656 x:0] ***************************
+D0407 13:22:43.987603    3656 x:0] Load container "/var/run/docker/runtime-runsc/moby" "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:43.988783    3656 x:0] Destroy container "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:43.988799    3656 x:0] Destroying container "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:43.988808    3656 x:0] Destroying root container "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498" by destroying sandbox
+D0407 13:22:43.988816    3656 x:0] Destroy sandbox "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:43.988826    3656 x:0] Killing sandbox "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:43.988847    3656 x:0] Killing gofer for container "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498", PID: 3402
+D0407 13:22:44.089331    3656 x:0] Deleting cgroup "/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089385    3656 x:0] Removing cgroup controller for key="cpuset" path="/sys/fs/cgroup/cpuset/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089452    3656 x:0] Removing cgroup controller for key="net_cls" path="/sys/fs/cgroup/net_cls/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089491    3656 x:0] Removing cgroup controller for key="pids" path="/sys/fs/cgroup/pids/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089544    3656 x:0] Removing cgroup controller for key="blkio" path="/sys/fs/cgroup/blkio/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089589    3656 x:0] Removing cgroup controller for key="memory" path="/sys/fs/cgroup/memory/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089633    3656 x:0] Removing cgroup controller for key="net_prio" path="/sys/fs/cgroup/net_prio/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089653    3656 x:0] Removing cgroup controller for key="devices" path="/sys/fs/cgroup/devices/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089677    3656 x:0] Removing cgroup controller for key="freezer" path="/sys/fs/cgroup/freezer/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089702    3656 x:0] Removing cgroup controller for key="perf_event" path="/sys/fs/cgroup/perf_event/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089762    3656 x:0] Removing cgroup controller for key="systemd" path="/sys/fs/cgroup/systemd/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:44.089784    3656 x:0] Removing cgroup controller for key="cpu" path="/sys/fs/cgroup/cpu/docker/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+I0407 13:22:44.089920    3656 x:0] Exiting with status: 0

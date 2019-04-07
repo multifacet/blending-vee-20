@@ -1,0 +1,16 @@
+I0407 13:22:43.980306    3651 x:0] ***************************
+I0407 13:22:43.980376    3651 x:0] Args: [/usr/local/bin/runsc --debug-log=/tmp/runsc/ --debug --strace --root /var/run/docker/runtime-runsc/moby --log /run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498/log.json --log-format json state 70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498]
+I0407 13:22:43.980397    3651 x:0] Version 252f877f3d0c
+I0407 13:22:43.980404    3651 x:0] PID: 3651
+I0407 13:22:43.980413    3651 x:0] UID: 0, GID: 0
+I0407 13:22:43.980419    3651 x:0] Configuration:
+I0407 13:22:43.980425    3651 x:0] 		RootDir: /var/run/docker/runtime-runsc/moby
+I0407 13:22:43.980432    3651 x:0] 		Platform: ptrace
+I0407 13:22:43.980457    3651 x:0] 		FileAccess: exclusive, overlay: false
+I0407 13:22:43.980465    3651 x:0] 		Network: sandbox, logging: false
+I0407 13:22:43.980488    3651 x:0] 		Strace: true, max size: 1024, syscalls: []
+I0407 13:22:43.980495    3651 x:0] ***************************
+D0407 13:22:43.980503    3651 x:0] Load container "/var/run/docker/runtime-runsc/moby" "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:43.981912    3651 x:0] Returning state for container &{ID:70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Spec:0xc00008f570 BundleDir:/run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Root:/var/run/docker/runtime-runsc/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 CreatedAt:2019-04-07 13:22:39.363632301 -0600 MDT Owner: ConsoleSocket: Status:stopped GoferPid:3402 goferIsChild:false Sandbox:0xc0001d70b0}
+D0407 13:22:43.981955    3651 x:0] State: {Version:1.0.1-dev ID:70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Status:stopped Pid:-1 Bundle:/run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Annotations:map[]}
+I0407 13:22:43.982032    3651 x:0] Exiting with status: 0

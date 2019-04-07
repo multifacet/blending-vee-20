@@ -1,0 +1,21 @@
+I0407 13:22:39.656763    3498 x:0] ***************************
+I0407 13:22:39.656820    3498 x:0] Args: [/usr/local/bin/runsc --debug-log=/tmp/runsc/ --debug --strace --root /var/run/docker/runtime-runsc/moby --log /run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498/log.json --log-format json state 70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498]
+I0407 13:22:39.656843    3498 x:0] Version 252f877f3d0c
+I0407 13:22:39.656851    3498 x:0] PID: 3498
+I0407 13:22:39.656863    3498 x:0] UID: 0, GID: 0
+I0407 13:22:39.656870    3498 x:0] Configuration:
+I0407 13:22:39.656877    3498 x:0] 		RootDir: /var/run/docker/runtime-runsc/moby
+I0407 13:22:39.656886    3498 x:0] 		Platform: ptrace
+I0407 13:22:39.656899    3498 x:0] 		FileAccess: exclusive, overlay: false
+I0407 13:22:39.656908    3498 x:0] 		Network: sandbox, logging: false
+I0407 13:22:39.656920    3498 x:0] 		Strace: true, max size: 1024, syscalls: []
+I0407 13:22:39.656928    3498 x:0] ***************************
+D0407 13:22:39.656939    3498 x:0] Load container "/var/run/docker/runtime-runsc/moby" "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:39.660063    3498 x:0] Signal container "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498": signal 0
+D0407 13:22:39.660104    3498 x:0] Signal sandbox "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:39.660114    3498 x:0] Connecting to sandbox "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:39.660178    3498 x:0] urpc: successfully marshalled 144 bytes.
+D0407 13:22:39.660380    3498 x:0] urpc: unmarshal success.
+D0407 13:22:39.660404    3498 x:0] Returning state for container &{ID:70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Spec:0xc00008f500 BundleDir:/run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Root:/var/run/docker/runtime-runsc/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 CreatedAt:2019-04-07 13:22:39.363632301 -0600 MDT Owner: ConsoleSocket: Status:running GoferPid:3402 goferIsChild:false Sandbox:0xc0001d70b0}
+D0407 13:22:39.660436    3498 x:0] State: {Version:1.0.1-dev ID:70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Status:running Pid:3411 Bundle:/run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Annotations:map[]}
+I0407 13:22:39.660483    3498 x:0] Exiting with status: 0

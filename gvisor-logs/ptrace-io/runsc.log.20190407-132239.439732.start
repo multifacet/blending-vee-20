@@ -1,0 +1,28 @@
+I0407 13:22:39.439766    3450 x:0] ***************************
+I0407 13:22:39.439809    3450 x:0] Args: [/usr/local/bin/runsc --debug-log=/tmp/runsc/ --debug --strace --root /var/run/docker/runtime-runsc/moby --log /run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498/log.json --log-format json start 70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498]
+I0407 13:22:39.439830    3450 x:0] Version 252f877f3d0c
+I0407 13:22:39.439837    3450 x:0] PID: 3450
+I0407 13:22:39.439846    3450 x:0] UID: 0, GID: 0
+I0407 13:22:39.439852    3450 x:0] Configuration:
+I0407 13:22:39.439858    3450 x:0] 		RootDir: /var/run/docker/runtime-runsc/moby
+I0407 13:22:39.439864    3450 x:0] 		Platform: ptrace
+I0407 13:22:39.439874    3450 x:0] 		FileAccess: exclusive, overlay: false
+I0407 13:22:39.439884    3450 x:0] 		Network: sandbox, logging: false
+I0407 13:22:39.439894    3450 x:0] 		Strace: true, max size: 1024, syscalls: []
+I0407 13:22:39.439901    3450 x:0] ***************************
+D0407 13:22:39.439908    3450 x:0] Load container "/var/run/docker/runtime-runsc/moby" "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:39.441157    3450 x:0] Start container "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+D0407 13:22:39.441200    3450 x:0] Executing hook {Path:/proc/2837/exe Args:[libnetwork-setkey 70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 bc9d2e32b9937d4f15cb55d6b6a805a6a38789cd502011680a01d6409701d74e] Env:[] Timeout:<nil>}, state: {Version:1.0.1-dev ID:70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Status:created Pid:3411 Bundle:/run/containerd/io.containerd.runtime.v1.linux/moby/70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498 Annotations:map[]}
+D0407 13:22:39.585190    3450 x:0] Execute hook "/proc/2837/exe" success!
+D0407 13:22:39.585227    3450 x:0] Start root sandbox "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498", PID: 3411
+D0407 13:22:39.585238    3450 x:0] Connecting to sandbox "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+I0407 13:22:39.585265    3450 x:0] Setting up network
+I0407 13:22:39.585330    3450 x:0] Applying namespace network at path "/proc/3411/ns/net"
+D0407 13:22:39.611538    3450 x:0] Setting up network, config: {FilePayload:{Files:[0xc00009ea58]} LoopbackLinks:[{Name:lo Addresses:[127.0.0.1] Routes:[{Destination:127.0.0.0 Mask:ff000000 Gateway:<nil>}]}] FDBasedLinks:[{Name:eth0 MTU:1500 Addresses:[172.17.0.2] Routes:[{Destination:172.17.0.0 Mask:ffff0000 Gateway:<nil>}] GSOMaxSize:65536}] DefaultGateway:{Route:{Destination:0.0.0.0 Mask:00000000000000000000ffff00000000 Gateway:172.17.0.1} Name:eth0}}
+D0407 13:22:39.611739    3450 x:0] urpc: successfully marshalled 462 bytes.
+D0407 13:22:39.638139    3450 x:0] urpc: unmarshal success.
+I0407 13:22:39.638160    3450 x:0] Restoring namespace network
+D0407 13:22:39.638186    3450 x:0] urpc: successfully marshalled 112 bytes.
+D0407 13:22:39.651083    3450 x:0] urpc: unmarshal success.
+D0407 13:22:39.651129    3450 x:0] Save container "70f0f8939cb06eb3517ff01cadcd97fa1961ea145c753fc4268da9ef9cdbd498"
+I0407 13:22:39.651584    3450 x:0] Exiting with status: 0
