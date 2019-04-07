@@ -28,7 +28,7 @@ def lambda_handler(event, context):
     # print(os.environ)
     # print(context.__dict__)
     thread_id = sys.argv[2]
-    server_ip = "128.104.222.157"
+    server_ip = "128.110.154.183"
     port = 5201 + int (thread_id)
 
     print(port)
