@@ -45,7 +45,7 @@ def lambda_handler(event, context):
     # t, s = buf[-2], buf[-1]
     # t = t.split(" ")[1]
     # # s = s.split(" ")[1]
-    ioload_result = ioload_test(10, "512kB", 100)
+    ioload_result = ioload_test(10, "4kB", 100)
 
     return {
         "ioload": ioload_result
@@ -99,11 +99,9 @@ def ioload(size, cnt):
     st = time.time() * 1000
     proc = subprocess.Popen(["dd",
                              "if=/dev/urandom",
-                             "of=/tmp/ioload.log",
+                             "of=/dev/shm/ioload.log",
                              "bs=%s" % size,
-                             "count=%s" % cnt,
-                             "conv=fdatasync",
-                             "oflag=dsync"],
+                             "count=%s" % cnt],
                             stderr=subprocess.PIPE)
     
     ed = time.time() * 1000
