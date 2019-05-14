@@ -1,14 +1,14 @@
 #!/bin/bash -e
 VM_ID="${1:-0}" # Default to vm_id=0
 
-DRIVE="$PWD/sb$VM_ID""custom.xenial.rootfs.ext4"
+DRIVE="$PWD/sb$VM_ID""my.xenial.rootfs.ext4"
 
 KERNEL="$PWD/vmlinux"
 TAP_DEV="tap$VM_ID"
 
 let num=10
 let start_tap=1
-KERNEL_BOOL_ARGS="console=ttyS0 reboot=k panic=1 pci=off"
+KERNEL_BOOT_ARGS="console=ttyS0 reboot=k panic=1 pci=off"
 #KERNEL_BOOT_ARGS="panic=1 pci=off reboot=k tsc=reliable quiet 8250.nr_uarts=0 ipv6.disable=1 $R_INIT"
 #KERNEL_BOOT_ARGS="console=ttyS0 reboot=k panic=1 pci=off nomodules ipv6.disable=1 $R_INIT"
 
@@ -19,6 +19,7 @@ curl_put() {
     local URL_PATH="$1"
     local OUTPUT RC
     OUTPUT="$("${CURL[@]}" -X PUT --data @- "http://localhost/${URL_PATH#/}" 2>&1)"
+    echo "$OUTPUT"
     RC="$?"
     if [ "$RC" -ne 0 ]; then
         echo "Error: curl PUT ${URL_PATH} failed with exit code $RC, output:"
@@ -31,6 +32,8 @@ curl_put() {
         echo "$OUTPUT"
         return 1
     fi
+
+    echo "done"
 }
 
 logfile="$PWD/output/fc-sb${VM_ID}-log"
@@ -50,10 +53,12 @@ FC_MAC="AA:FC:00:00:00:01"
 
 KERNEL_BOOT_ARGS="${KERNEL_BOOT_ARGS} ip=${FC_IP}::${TAP_IP}:${MASK_LONG}::eth0:off"
 
+echo $KERNEL_BOOT_ARGS
+
 # Start Firecracker API server
 rm -f "$API_SOCKET"
 
-./firecracker --api-sock "$API_SOCKET" --context '{"id": "fc-'${VM_ID}'", "jailed": false, "seccomp_level": 0, "start_time_us": 0, "start_time_cpu_us": 0}' &
+./firecracker --api-sock "$API_SOCKET" & #--context '{"id": "fc-'${VM_ID}'", "jailed": false, "seccomp_level": 0, "start_time_us": 0, "start_time_cpu_us": 0}' &
 
 sleep 0.015s
 
@@ -106,9 +111,9 @@ EOF
 #EOF
 
 
-curl_put '/network-interfaces/enp1s0f0' <<EOF
+curl_put '/network-interfaces/eno49' <<EOF
 {
-  "iface_id": "enp1s0f0",
+  "iface_id": "eno49",
   "guest_mac": "$FC_MAC",
   "host_dev_name": "$TAP_DEV"
 }
@@ -121,6 +126,8 @@ curl_put '/actions' <<EOF
 }
 EOF
 
+
+echo "done, done"
 
 #bring up networking in the guest VM
 #ssh -i xenial.rootfs.id_rsa root@$FC_ID
