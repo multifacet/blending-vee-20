@@ -43,13 +43,13 @@ metricsfile="/dev/null"
 touch $logfile
 
 # Setup TAP device that uses proxy ARP
-MASK_LONG="255.255.255.0"
+
+
+MASK_LONG="255.255.255.252"
 #MASK_SHORT="/30"
-FC_IP="172.17.100."$((num+VM_ID))
-TAP_IP="172.17.100."$((start_tap+VM_ID))
-
-
-FC_MAC="AA:FC:00:00:00:01"
+FC_IP="$(printf '169.254.%s.%s' $(((4 * VM_ID + 1) / 256)) $(((4 * VM_ID + 1) % 256)))"
+TAP_IP="$(printf '169.254.%s.%s' $(((4 * VM_ID + 2) / 256)) $(((4 * VM_ID + 2) % 256)))"
+FC_MAC="$(printf '02:FC:00:00:%02X:%02X' $((VM_ID / 256)) $((VM_ID % 256)))"
 
 KERNEL_BOOT_ARGS="${KERNEL_BOOT_ARGS} ip=${FC_IP}::${TAP_IP}:${MASK_LONG}::eth0:off"
 
@@ -100,13 +100,13 @@ curl_put '/drives/1' <<EOF
   "is_read_only": false
 }
 EOF
-#
+
 #curl_put '/drives/2' <<EOF
 #{
-#  "drive_id": "2",
-#  "path_on_host": "$RW_DRIVE",
-#  "is_root_device": false,
-#  "is_read_only": false
+ # "drive_id": "2",
+ # "path_on_host": "/dev/loop0",
+ # "is_root_device": false,
+ # "is_read_only": false
 #}
 #EOF
 
