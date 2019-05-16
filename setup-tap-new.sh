@@ -2,7 +2,7 @@
 
 TOTAL_TAPS="${1:-0}"  #Default to 0
 echo $TOTAL_TAPS
-WIRELESS_DEVICE_NAME="enp1s0f0"
+WIRELESS_DEVICE_NAME="eno49"
 
 #enable ipv4 forwarding
 #sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
