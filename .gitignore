@@ -2,3 +2,6 @@
 old/*
 lambda-scripts/*
 docker/task/*afs*
+worloads/microbenchmarks/nqueens
+worloads/microbenchmarks/cprobe
+

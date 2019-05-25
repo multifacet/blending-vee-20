@@ -19,11 +19,14 @@ class Worker(Thread):
             if self.queue.empty():
                 continue
             id, cmd, output_file = self.queue.get()
-            num = 10 + id
-            vm_ip = "172.17.100."+str(num)
+            #num = 10 + id
+            num1 = (4 * id + 2) / 256
+            num2 = (4 * id + 1) % 256
+            vm_ip="169.254."+str(num1)+"."+str(num2) 
             
-            print(command)
+            print(vm_ip)
             with open(output_file, "wb", 0) as out:
+                print("Hello!!")
                 subprocess.Popen(["./firecracker-test-command.sh", str(vm_ip)], stdout=out, stderr=subprocess.STDOUT)
            # print(out)
             try:
@@ -34,11 +37,12 @@ class Worker(Thread):
 if __name__ == '__main__':
     threads = []
     #command = "ls"
-    command = "docker run --rm -v /root/Secure-Serverless/docker/task:/var/task lambci/lambda:python2.7 io_lambda_function.lambda_handler"
+    command = ""
     output_file = "firecracker-test"
     q = Queue(maxsize=0)
+    print(sys.argv[1])
     #set the total thread number
-    total_thread = 2
+    total_thread = int(sys.argv[1])
 
     for i in range(total_thread):
         threads.append(command)
