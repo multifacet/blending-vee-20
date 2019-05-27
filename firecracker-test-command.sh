@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
-ssh -i xenial.rootfs.id_rsa root@$1
 
-#run the test and redirect result to a file 
+#fio test
+ssh -i xenial.rootfs.id_rsa root@$1 ./fio-rand.sh > fio_$2.txt exit
 
-#docker run --rm -v /root/Secure-Serverless/docker/task:/var/task lambci/lambda:python2.7 network_lambda_function.lambda_handler
+#net
+ssh -i xenial.rootfs.id_rsa root@$1 ./net.sh $2 $3 > $4_net_test.txt exit
 
-exit
+#cpu
+
+ssh -i xenial.rootfs.id_rsa root@$1 ./cpu.sh > $2_cpu_test.txt exit
+
