@@ -24,13 +24,13 @@ int is_power_of_2(int num)
 }
 
 
-inline void bounded_probe(node *head, unsigned count) {
+ void bounded_probe(node *head, unsigned count) {
   node *p;
   int i = count;
   for(p = head; p && (i--); p = p->next);
 }
 
-inline void probe(node *head) {
+ void probe(node *head) {
   node *p; 
   
   /*

@@ -144,7 +144,7 @@ long compare_time(timespec t1, timespec t2) {
 #define rdtsc_stop(val) (val) = rdtsc() - (val)
  
 /* Read CPU cycle cointer, in cycles -- with serialization */
- uint64_t rdtsc() {
+uint64_t rdtsc() {
   uint32_t lo, hi;
   asm volatile ( /* serialize */
       "xorl %%eax,%%eax \n        cpuid"
