@@ -6,6 +6,7 @@ import threading
 import logging
 from Queue import Queue
 from threading import Thread
+from subprocess import Popen, PIPE
 
 
 class Worker(Thread):
@@ -19,10 +20,24 @@ class Worker(Thread):
             if self.queue.empty():
                 continue
             id, cmd, output_file = self.queue.get()
-            print(" command", cmd)
+            hostname = "128.110.154.173"
+            port = 5201 + id
+            #print(" command", cmd)
             #print('\n')
-            with open(output_file, "wb", 0) as out:
-                subprocess.Popen(["./gVisor-test-command.sh", str(id)], stdout=out, stderr=subprocess.STDOUT)
+            #with open(output_file, "wb", 0) as out:
+            print("hello")
+           # with open(output_file, "wb", 0) as out:
+            #    subprocess.Popen(["./gVisor-test-command.sh", str(id)], stdout=out, stderr=subprocess.STDOUT)
+            #cpu/fio
+            output = subprocess.call(["./gVisor-test-command.sh",str(id)])
+            #print(output)
+            #net
+            #output= subprocess.call(["./gVisor-test-command.sh", str(hostname), str(port), str(id)])
+            #print (output)
+            #session = subprocess.Popen(["./gVisor-test-command.sh", str(id)], stdout=PIPE, stderr=PIPE)
+                #net
+                #subprocess.Popen(["./gVisor-test-command.sh", str(hostname), str(port), str(id)], stdout=out, stderr=subprocess.STDOUT)
+
            # print(out)
             try:
                 done = True
@@ -60,6 +75,7 @@ if __name__ == '__main__':
 
     #wait until the queue has been processed
     q.join()
+   
    # for worker in threads:
     #    worker.join()
 

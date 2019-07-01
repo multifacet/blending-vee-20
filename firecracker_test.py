@@ -21,7 +21,7 @@ class Worker(Thread):
             id, cmd, output_file = self.queue.get()
             #num = 10 + id
             #iperf
-            hostname = "128.110.154.157"
+            hostname = "128.110.154.173"
             port = 5201 + id
             num1 = (4 * id + 2) / 256
             num2 = (4 * id + 1) % 256
@@ -29,13 +29,13 @@ class Worker(Thread):
             
             print(vm_ip)
             with open(output_file, "wb", 0) as out:
-                #print("Hello!!")
-                #fio
+                print("Hello!!")
+                #fio/cpu
                 subprocess.Popen(["./firecracker-test-command.sh", str(vm_ip), str(id)], stdout=out, stderr=subprocess.STDOUT)
-                #cpu
-                subprocess.Popen(["./firecracker-test-command.sh", str(vm_ip), str(hostname), str(port), str(id)], stdout=out, stderr=subprocess.STDOUT)
                 #net
-                subprocess.Popen(["./firecracker-test-command.sh", str(vm_ip), str(id)], stdout=out, stderr=subprocess.STDOUT)
+                #subprocess.Popen(["./firecracker-test-command.sh", str(vm_ip), str(hostname), str(port), str(id)], stdout=out, stderr=subprocess.STDOUT)
+                #extra
+               # subprocess.Popen(["./firecracker-test-command.sh", str(vm_ip), str(id)], stdout=out, stderr=subprocess.STDOUT)
 
            # print(out)
             try:
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     threads = []
     #command = "ls"
     command = ""
-    output_file = "firecracker-test"
+    output_file = "fc"
     q = Queue(maxsize=0)
     print(sys.argv[1])
     #set the total thread number

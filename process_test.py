@@ -18,11 +18,14 @@ class Worker(Thread):
         while not done:
             if self.queue.empty():
                 continue
-            id, cmd, output_file = self.queue.get()
+            id, cmd, output_file, round_no = self.queue.get()
             print("id", id)
             #print('\n')
+            hostname = "128.110.154.173"
+            port = 5201 + id
             with open(output_file, "wb", 0) as out:
-                subprocess.Popen(["./process-command.sh", str(id)], stdout=out, stderr=subprocess.STDOUT)
+               # subprocess.Popen(["./process-command.sh", str(id), str(hostname), str(port)], stdout=out, stderr=subprocess.STDOUT)
+                subprocess.Popen(["./process-command.sh", str(id), str(round_no)], stdout=out, stderr=subprocess.STDOUT)
            # print(out)
             try:
                 done = True
@@ -33,8 +36,10 @@ if __name__ == '__main__':
     threads = []
     output_file = "process-test"
     command =""
-    
+
     q = Queue(maxsize=0)
+
+    
     #set the total thread number
     total_thread = int(sys.argv[1])  
 
@@ -42,27 +47,17 @@ if __name__ == '__main__':
     for i in range(total_thread):
         threads.append(command)
 
-    #print(threads)
     for i in range(total_thread):
         worker = Worker(q)
-        worker.daemon = True  # setting threads as "daemon" allows main program to
-        # exit eventually even if these dont finish
-        # correctly.
+        worker.daemon = True
         worker.start()
         #threads.append(worker)
 
     count = 0
     for cmd in threads:
-        q.put((count, cmd, output_file + str(count) + ".txt"))
+        q.put((count, cmd, output_file + str(count) + ".txt", 0))
         count = count +1
 
-    #for i in range(total_thread):
-
-
-    #wait until the queue has been processed
     q.join()
-   # for worker in threads:
-    #    worker.join()
-
     logging.info('Done!')
 

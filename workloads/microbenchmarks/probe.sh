@@ -6,3 +6,4 @@ PID=$!
 sleep 10
 # Kill it
 kill -SIGINT $PID
+sleep 2

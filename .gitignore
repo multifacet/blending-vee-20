@@ -4,4 +4,7 @@ lambda-scripts/*
 docker/task/*afs*
 worloads/microbenchmarks/nqueens
 worloads/microbenchmarks/cprobe
-
+my.xenial.rootfs.ext4
+*.ext4
+*.txt
+firecracker
