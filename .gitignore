@@ -5,6 +5,7 @@ docker/task/*afs*
 worloads/microbenchmarks/nqueens
 worloads/microbenchmarks/cprobe
 my.xenial.rootfs.ext4
-*.ext4
+fc/*.ext4
 *.txt
+fc/output/*
 firecracker
