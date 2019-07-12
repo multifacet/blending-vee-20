@@ -9,3 +9,7 @@ fc/*.ext4
 *.txt
 fc/output/*
 firecracker
+cprobe
+fio.sh
+perf.data
+probe.sh

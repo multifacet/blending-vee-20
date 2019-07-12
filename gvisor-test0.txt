@@ -1,6 +1,0 @@
-WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
-START RequestId: 9c2f3de7-5fc7-4afc-9f37-568ee1eaddb1 Version: $LATEST
-END RequestId: 9c2f3de7-5fc7-4afc-9f37-568ee1eaddb1
-REPORT RequestId: 9c2f3de7-5fc7-4afc-9f37-568ee1eaddb1 Duration: 3596 ms Billed Duration: 3600 ms Memory Size: 128 MB Max Memory Used: 120 MB
-
-{"ioload": "0.277837, 184 MB/s,65.739990234375;0.271903, 188 MB/s,67.369873046875;0.27349, 187 MB/s,64.40380859375;0.273371, 187 MB/s,39.5029296875;0.311709, 164 MB/s,94.541748046875;0.275454, 186 MB/s,58.049072265625;0.275389, 186 MB/s,43.822998046875;0.277755, 184 MB/s,78.43896484375;0.271231, 189 MB/s,35.5;0.273515, 187 MB/s,31.17529296875"}
