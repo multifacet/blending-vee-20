@@ -18,14 +18,14 @@ class Worker(Thread):
         while not done:
             if self.queue.empty():
                 continue
-            id, cmd, output_file, round_no = self.queue.get()
+            id, cmd, output_file, round_no, total_time = self.queue.get()
             print("id", id)
             #print('\n')
             hostname = "128.110.154.173"
             port = 5201 + id
             with open(output_file, "wb", 0) as out:
                # subprocess.Popen(["./process-command.sh", str(id), str(hostname), str(port)], stdout=out, stderr=subprocess.STDOUT)
-                subprocess.Popen(["./process-command.sh", str(id), str(round_no)], stdout=out, stderr=subprocess.STDOUT)
+                subprocess.Popen(["./process-command.sh", str(id), str(round_no), str(total_time)], stdout=out, stderr=subprocess.STDOUT)
            # print(out)
             try:
                 done = True
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     
     #set the total thread number
     total_thread = int(sys.argv[1])  
-
+    total_time = int(sys.argv[2])
 
     for i in range(total_thread):
         threads.append(command)
@@ -55,7 +55,7 @@ if __name__ == '__main__':
 
     count = 0
     for cmd in threads:
-        q.put((count, cmd, output_file + str(count) + ".txt", 0))
+        q.put((count, cmd, output_file + str(count) + ".txt", 0, total_time))
         count = count +1
 
     q.join()

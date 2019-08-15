@@ -13,7 +13,7 @@ SB_ID="${1:-0}"
 total="${1:-1}"
 
 for ((i=0; i<total; i++)); do
-   ./start-firecracker.sh "$i"
+   taskset 0x2 ./start-firecracker.sh "$i"
 done
 
 

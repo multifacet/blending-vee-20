@@ -81,7 +81,7 @@ EOF
 curl_put '/machine-config' <<EOF
 {
   "vcpu_count": 1,
-  "mem_size_mib": 8192
+  "mem_size_mib": 2048
 }
 EOF
 

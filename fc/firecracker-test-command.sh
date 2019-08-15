@@ -38,8 +38,8 @@
 
 
 #cprobe
-for i in {1..3}
-do
-	 taskset 0x1 ssh -i xenial.rootfs.id_rsa root@$1 ./probe.sh  exit 
-done
+#for i in {1..3}
+#do
+taskset 0x2 ssh -i xenial.rootfs.id_rsa root@$1 ./probe.sh 100 exit 
+#done
 

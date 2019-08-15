@@ -26,4 +26,4 @@
 #rm randread_$1*
 #taskset 0x1 iperf3 -c $2 -p $3 > proc_net_$1.txt
 
-./probe.sh
+/my-disk/Secure-Serverless/probe.sh $3

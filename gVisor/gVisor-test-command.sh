@@ -47,5 +47,5 @@ echo $1
 
 
 #cprobe
-sudo docker run  --cpuset-cpus=0 --runtime=runsc-kvm  -m 2048M --rm -it probe > probe_$1.txt  
+sudo docker run  --cpuset-cpus=1  --runtime=runsc -m 2048M --rm -it probe /bin/bash ./probe.sh 100 >  runsc_probe_$1.txt  
 
