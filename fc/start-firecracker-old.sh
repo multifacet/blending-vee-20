@@ -80,9 +80,8 @@ EOF
 
 curl_put '/machine-config' <<EOF
 {
-  "vcpu_count": 10,
-  "mem_size_mib": 2048,
-  "ht_enabled": false
+  "vcpu_count": 1,
+  "mem_size_mib": 2048
 }
 EOF
 
