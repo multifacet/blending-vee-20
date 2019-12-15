@@ -31,7 +31,7 @@ sudo ./launch-many-firecracker.sh 10
 ```
 This will spin 10 microVMs.
 
-*Run *cleanup.sh* after you are done.
+* Run *cleanup.sh* after you are done.
 ```bash
 sudo ./cleanup.sh
 ```

@@ -3,7 +3,7 @@
 #starts multiple iperf servers
 
 #change the IP of the server running iperf3
-SERVER_IP="128.104.222.238"
+SERVER_IP="128.110.154.190"
 
 let START_PORT=5201
 

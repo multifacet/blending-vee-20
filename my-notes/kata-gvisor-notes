@@ -1,0 +1,7 @@
+----gVisor-------
+
+-> Google gVisor is OCI-compliant and integrates with Docker and Kubernetes. However, gVisor is more flexible and has an even smaller footprint. The gVisor core runs as an unprivileged user space process that supports most Linux system calls. To create the sandbox, gVisor isolates the workloads from the host OS by intercepting those calls and creating an environment that gets its own kernel and set of virtualized resources.
+
+-->only supports linux containers
+
+-->Although gVisor is more lightweight than Kata Containers, gVisor can't run all the Linux applications because it doesn't support all the system calls in the Linux system API.

@@ -1,14 +1,16 @@
 import glob
 import os
-
+import sys
 
 files = glob.glob( '*.txt' )
 count = 1
-with open( 'result.log', 'w' ) as result:
+with open( sys.argv[1], 'w' ) as result:
     for file in files:
-    	result.write("==========Thread" + str(count)+"========")
-        for line in open( file, 'r' ):
-            result.write( line )
+    	result.write("\n")
+       # for lines in open( file, 'r' ):
+        f_read = open(file , 'r')
+        line = f_read.readlines()[-1]
+        result.write( line)
 
-    os.system("rm " + str(file))
-    count = count + 1        
+        os.system("rm " + str(file))
+        count = count + 1        

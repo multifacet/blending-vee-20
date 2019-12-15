@@ -1,0 +1,191 @@
+
+==========Thread1========100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.19516 s, 16.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.01937 s, 17.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.17076 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.28086 s, 15.6 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.12449 s, 16.4 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 2.82374 s, 18.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.20363 s, 16.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.15177 s, 16.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.09774 s, 16.5 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.38026 s, 15.1 MB/s
+rm: cannot remove '/tmp/ioload.log': No such file or directory
+
+==========Thread2========100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.19641 s, 16.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.05047 s, 16.8 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.15598 s, 16.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.30569 s, 15.5 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.11634 s, 16.4 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 2.81917 s, 18.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.16389 s, 16.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.17452 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.08806 s, 16.6 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.40171 s, 15.1 MB/s
+rm: cannot remove '/tmp/ioload.log': No such file or directory
+
+==========Thread3========100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.19782 s, 16.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.01936 s, 17.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.17073 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.29659 s, 15.5 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.11783 s, 16.4 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 2.79357 s, 18.3 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.18795 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.17452 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.09026 s, 16.6 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.38178 s, 15.1 MB/s
+
+==========Thread4========100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.17509 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.03357 s, 16.9 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.16091 s, 16.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.29447 s, 15.5 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.11782 s, 16.4 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 2.82371 s, 18.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.20364 s, 16.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.14118 s, 16.3 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.08805 s, 16.6 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.38179 s, 15.1 MB/s
+rm: cannot remove '/tmp/ioload.log': No such file or directory
+
+==========Thread5========100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.17373 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.06463 s, 16.7 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.15599 s, 16.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.30571 s, 15.5 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.11635 s, 16.4 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 2.81919 s, 18.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.20361 s, 16.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.14119 s, 16.3 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.08804 s, 16.6 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.39972 s, 15.1 MB/s
+rm: cannot remove '/tmp/ioload.log': No such file or directory
+
+==========Thread6========100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.17717 s, 16.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.03358 s, 16.9 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.16089 s, 16.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.29448 s, 15.5 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.11782 s, 16.4 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 2.8238 s, 18.1 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.20362 s, 16.0 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.15176 s, 16.2 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.09777 s, 16.5 MB/s
+100+0 records in
+100+0 records out
+51200000 bytes (51 MB, 49 MiB) copied, 3.40482 s, 15.0 MB/s
+rm: cannot remove '/tmp/ioload.log': No such file or directory

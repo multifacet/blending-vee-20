@@ -27,8 +27,11 @@ def lambda_handler(event, context):
     # print(__file__)
     # print(os.environ)
     # print(context.__dict__)
-    server_ip = "128.104.222.238"
-    port = 5201
+    thread_id = sys.argv[2]
+    server_ip = "128.110.154.183"
+    port = 5201 + int (thread_id)
+
+    print(port)
 
     network = network_test(server_ip, port)
     return {
@@ -55,7 +58,7 @@ def network_test(server_ip, port):
             throughput in bits, mean rtt, min rtt, max rtt
             (see doc of iperf)
     """
-    sp = subprocess.Popen(["iperf3",
+    sp = subprocess.Popen(["./iperf3",
                            "-c",
                            server_ip,
                            "-p",
@@ -68,6 +71,7 @@ def network_test(server_ip, port):
                           stdout=subprocess.PIPE,
                           stderr=subprocess.PIPE)
     out, err = sp.communicate()
+    #print(out)
     _d = json.loads(out)["end"]
     sender = _d["streams"][0]["sender"]
     bps = str(sender["bits_per_second"])

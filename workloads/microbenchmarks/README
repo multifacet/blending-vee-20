@@ -1,0 +1,4 @@
+This folder consists of microbenchmarks that were used in USENIX'14 paper, "Scheduler-based Defenses against Cross-VM Side-channels". These microbenchmarks are useful stand-in for highly cache-trashing interactive and batch workloads (ChattyCprobe and Cprobe, respectively). NQueens is a very good CPU-intensive (non-cache-thrashing) batch workload.
+
+Refer the paper for more details:
+https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/varadarajan
