@@ -1,25 +1,58 @@
 #!/usr/bin/env bash
 
-echo "here"
-echo $1
 
-#8k read
-#sudo docker run --cpuset-cpus=0 -m 2048M --tmpfs /tmp  --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randread --bs=8k --direct=1 --size=512M --numjobs=2 --runtime=240 --group_reporting > runc_fio_$1.txt
-#sudo docker run --runtime=runsc-kvm -m 2048M  --tmpfs /tmp  --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randread --bs=8k --direct=0 --invalidate=0 --size=512M --numjobs=2 --runtime=240 --group_reporting  > runsc_fio_$1.txt
-
-#128kread
-#sudo docker run --runtime=runsc-kvm  -m 2048M --tmpfs /tmp  --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randread --bs=128k --direct=1 --size=512M --numjobs=2 --runtime=240 --group_reporting > runc_fio_$1.txt
-#sudo docker run --runtime=runsc-kvm -m 2048M  --tmpfs /tmp  --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randread --bs=128k --direct=0 --invalidate=0 --size=512M --numjobs=2 --runtime=240 --group_reporting  > runsc_fio_$1.txt
-
+INSTANCE=$1
+TEST_NAME=$2
+RUNTIME=$3
+IP=$4
+PORT=$5
+MEMORY=8192M
+CONTAINER1=net-sysbench
+CONTAINER2=micro-bench
 
 
-#8k write
-#sudo docker run --runtime=runsc-kvm -m 2048M   --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randwrite --bs=8k --direct=1 --size=512M --numjobs=2 --runtime=240 --group_reporting > runc_fio_$1.txt
-#sudo docker run --runtime=runsc-kvm -m 2048M    --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randwrite --bs=8k --direct=0 --invalidate=0 --size=512M --numjobs=2 --runtime=240 --group_reporting  > runsc_fio_$1.txt
+#echo "here"
+#echo $1
 
-#128kwrite
-#sudo docker run  -m 2048M --runtime=runsc-kvm  --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randwrite --bs=128k --direct=1 --size=512M --numjobs=2 --runtime=240 --group_reporting > runc_fio_$1.txt
-#sudo docker run -m 2048M  --runtime=runsc-kvm  --rm -it benchmark-img fio --name=randread_$1 --ioengine=libaio --iodepth=1 --rw=randwrite --bs=128k --direct=0 --invalidate=0 --size=512M --numjobs=2 --runtime=240 --group_reporting  > runsc_fio_$1.txt
+
+
+run_multiple_size()
+{
+    FILE=$1
+    #echo "Hello"
+    TOTAL=30
+    AMOUNT=18
+    SIZE=$((TOTAL-AMOUNT))
+
+    while [ $AMOUNT -ge 10 ]
+    do
+         docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER2 ./$FILE $AMOUNT $SIZE
+         AMOUNT=$(( AMOUNT-2 ))
+         SIZE=$(( SIZE+2 ))
+    done
+}
+
+# run tests
+case $TEST_NAME in
+    "net")
+        docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER1 iperf3 -c $IP -p $PORT
+        ;;
+    "cpu")
+        docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER1 sysbench cpu --cpu-max-prime=20000 --threads=1 run
+        ;;
+    "cprobe")
+        docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER2  /bin/bash ./probe.sh 10
+        ;;
+    "mem")
+        run_multiple_size memory
+        ;;
+    "read")
+        run_multiple_size read
+        ;;
+    "write")
+       run_multiple_size write
+        ;;
+esac
 
 #sudo docker run --cpuset-cpus=0  -m 2048M  --rm -it benchmark-img sysbench cpu --cpu-max-prime=20000 --threads=1 run > runsc_cpu_$1.txt 
 
@@ -47,5 +80,5 @@ echo $1
 
 
 #cprobe
-sudo docker run  --cpuset-cpus=1  --runtime=runsc -m 2048M --rm -it probe /bin/bash ./probe.sh 100 >  runsc_probe_$1.txt  
+#sudo docker run  --cpuset-cpus=1  --runtime=runsc -m 2048M --rm -it probe /bin/bash ./probe.sh 100 >  runsc_probe_$1.txt
 
