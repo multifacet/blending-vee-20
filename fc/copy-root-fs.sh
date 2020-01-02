@@ -5,7 +5,7 @@ start=0
 upperlim="${1-1}"
 
 #DRIVE="lambda-root.ext4"
-DRIVE="my.xenial.rootfs.ext4"
+DRIVE=$2
 
 for ((i=start; i<upperlim; i++)); do
   echo "sb$i"${DRIVE}

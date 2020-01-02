@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
-#move the config file for gVisor, restart docker
+#make workloads
+(cd workloads/LLCProbe && make cprobe)
+(cd workloads/microbenchmarks/ && make)
+mv workloads/LLCProbe/cprobe workloads/microbenchmarks/
+
 pip install PyYAML
+
+#move the config file for gVisor, restart docker
+
 mv daemon.json /etc/docker/daemon.json
 sudo systemctl restart docker
 

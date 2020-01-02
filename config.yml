@@ -1,3 +1,9 @@
 net_test:
     IP: 128.110.154.173
     port: 5201
+fc_setup:
+    total_taps: 10
+    network_interface: eno49
+    root_fs: my.xenial.rootfs.ext4
+    cert: xenial.rootfs.id_rsa
+

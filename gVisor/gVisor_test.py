@@ -39,7 +39,7 @@ class Worker(Thread):
             #with open(output_file, "wb", 0) as out:
             #print("hello")
             process = subprocess.Popen(["./gVisor-test-command.sh", str(id), str(test_name),
-                                        str(runtime), str(hostname),  str(port) ],
+                                        str(runtime), str(hostname),  str(port)],
                                        stdout=PIPE, stderr=PIPE)
             stdout, stderr = process.communicate()
             print(stdout.decode('utf-8').splitlines())
@@ -65,7 +65,7 @@ class Worker(Thread):
 
 if __name__ == '__main__':
     if len(sys.argv) < 4:
-        print("Invalid arguements\nUsage: pyhton run_test.py <instances> <runtime> <test_name in{net, cpu, read, write, mem}>")
+        print("Invalid arguements\nUsage: pyhton run_test.py <instances> <runtime:> <test_name in{net, cpu, read, write, mem, mem_unmap}>")
         sys.exit()
 
     instances = int(sys.argv[1])
@@ -97,4 +97,4 @@ if __name__ == '__main__':
   # for worker in threads:
     #    worker.join()
 
-    logging.info('Done!')
+    #logging.info('Done!')

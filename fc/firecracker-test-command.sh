@@ -1,23 +1,5 @@
 #!/usr/bin/env bash
 
-#fio test
-#taskset 0x1 ssh -i xenial.rootfs.id_rsa root@$1 ./fio-rand.sh > fio_$2.txt exit
-
-#direct read
-#ssh -i xenial.rootfs.id_rsa root@$1 ./direct-read8k.sh > fio_$2.txt exit
-#ssh -i xenial.rootfs.id_rsa root@$1 ./direct-read128k.sh > fio_$2.txt exit
-
-#buffer read
-#ssh -i xenial.rootfs.id_rsa root@$1 ./buffer-read8k.sh > fio_$2.txt exit
-#ssh -i xenial.rootfs.id_rsa root@$1 ./buffer-read128k.sh > fio_$2.txt exit
-
-#direct
-#ssh -i xenial.rootfs.id_rsa root@$1 ./direct-write8k.sh > fio_$2.txt exit
-#ssh -i xenial.rootfs.id_rsa root@$1 ./direct-write128k.sh > fio_$2.txt exit
-
-#buffer write
-#ssh -i xenial.rootfs.id_rsa root@$1 ./buffer-write8k.sh > fio_$2.txt exit
-#ssh -i xenial.rootfs.id_rsa root@$1 ./buffer-write128k.sh > fio_$2.txt exit
 
 
 #net
@@ -43,3 +25,103 @@
 taskset 0x2 ssh -i xenial.rootfs.id_rsa root@$1 ./probe.sh 100 exit 
 #done
 
+KEY="xenial.rootfs.id_rsa"
+VM_IP=$1
+TEST_NAME=$2
+IP=$3
+PORT=$4
+COMMAND="ssh -i xenial.rootfs.id_rsa root@$VM_IP"
+
+
+run_mem()
+{
+    FILE=$1
+    OPTION=$2
+    TOTAL=30
+    AMOUNT=18
+    SIZE=$((TOTAL-AMOUNT))
+
+    while [ $AMOUNT -ge 10 ]
+    do
+         $COMMAND ./$FILE $AMOUNT $SIZE 1 $OPTION exit
+         AMOUNT=$(( AMOUNT-2 ))
+         SIZE=$(( SIZE+2 ))
+    done
+}
+
+run_write()
+{
+    FILE=$1
+    OPTION=$2
+    TOTAL=30
+    AMOUNT=18
+    SIZE=$((TOTAL-AMOUNT))
+
+    while [ $AMOUNT -ge 10 ]
+    do
+         $COMMAND ./$FILE $AMOUNT $SIZE 1 $OPTION exit
+         AMOUNT=$(( AMOUNT-2 ))
+         SIZE=$(( SIZE+2 ))
+    done
+}
+
+run_read()
+{
+    FILE=$1
+    OPTION=$2
+    TOTAL=30
+    AMOUNT=18
+    SIZE=$((TOTAL-AMOUNT))
+
+    while [ $AMOUNT -ge 10 ]
+    do
+         $COMMAND ./$FILE $AMOUNT $SIZE 1 $OPTION exit
+
+         if [[ $OPTION = 1 ]] ;
+         then
+            ../workloads/microbenchmarks/drop_cache
+            $COMMAND ./drop_cache exit
+
+         elif [[ $OPTION = 2 ]] ;
+         then
+            $COMMAND ./drop_cache exit
+
+         else
+            ../workloads/microbenchmarks/drop_cache
+
+         fi
+         AMOUNT=$(( AMOUNT-2 ))
+         SIZE=$(( SIZE+2 ))
+    done
+}
+
+# run tests
+case $TEST_NAME in
+    "net")
+        $COMMAND ./net.sh $IP $PORT exit
+        ;;
+    "cpu")
+        $COMMAND ./cpu.sh exit
+        ;;
+    "cprobe")
+        $COMMAND ./probe.sh 10 exit
+        ;;
+     "mem")
+        run_mem memory 2
+        ;;
+    "mem_unmap")
+        run_mem memory 3
+        ;;
+    "read_both")
+        run_read read 1
+        ;;
+    "read_fc")
+        run_read read 2
+        ;;
+    "read_host")
+        run_read read 3
+        ;;
+    "write")
+       run_write write
+        ;;
+esac
