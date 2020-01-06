@@ -1,5 +1,5 @@
 #launch script in background
-./cprobe 1024 &
+./cprobe 1 &
 # Get its PID
 PID=$!
 # Wait for 10 seconds
