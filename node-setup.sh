@@ -16,7 +16,7 @@ curl -fsSL -o hello-rootfs.ext4 https://s3.amazonaws.com/spec.ccfc.min/img/hello
 #https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
 
 
-#gVisor setup
+#test-scripts setup
 #https://github.com/google/gvisor
 wget https://storage.googleapis.com/gvisor/releases/nightly/latest/runsc
 wget https://storage.googleapis.com/gvisor/releases/nightly/latest/runsc.sha512

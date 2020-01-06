@@ -15,6 +15,9 @@ class Worker(Thread):
         Thread.__init__(self)
         self.queue = queue
 
+    def process_output(self, file, stdout):
+        return ""
+
     def run(self):
         done = False
         while not done:
@@ -24,6 +27,7 @@ class Worker(Thread):
 
             hostname = ""
             port = 5201
+            global process
             with open("../config.yml", 'r') as ymlfile:
                 cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 
@@ -36,25 +40,35 @@ class Worker(Thread):
                 if item == 'port':
                     port = val + id
 
-            #with open(output_file, "wb", 0) as out:
-            #print("hello")
-            process = subprocess.Popen(["./gVisor-test-command.sh", str(id), str(test_name),
-                                        str(runtime), str(hostname),  str(port)],
-                                       stdout=PIPE, stderr=PIPE)
+            if runtime == 'fc':
+                num1 = (4 * id + 2) / 256
+                num2 = (4 * id + 1) % 256
+                vm_ip = "169.254." + str(num1) + "." + str(num2)
+                process = subprocess.Popen(["./fc.sh",  str(vm_ip), str(test_name),
+                                           str(hostname), str(port)],
+                                           stdout=PIPE, stderr=PIPE)
+            elif runtime == 'runc' or runtime.startswith('runsc'):
+                process = subprocess.Popen(["./container.sh", str(id), str(test_name),
+                                            str(runtime), str(hostname), str(port)],
+                                           stdout=PIPE, stderr=PIPE)
+            elif runtime == 'host':
+                process = subprocess.Popen(["./host.sh", str(test_name),
+                                            str(hostname), str(port)],
+                                           stdout=PIPE, stderr=PIPE)
             stdout, stderr = process.communicate()
             print(stdout.decode('utf-8').splitlines())
             stdout, stderr
            # with open(output_file, "wb", 0) as out:
-            #    subprocess.Popen(["./gVisor-test-command.sh", str(id)], stdout=out, stderr=subprocess.STDOUT)
+            #    subprocess.Popen(["./test-scripts-test-command.sh", str(id)], stdout=out, stderr=subprocess.STDOUT)
             #cpu/fio
-            #output = subprocess.call(["./gVisor-test-command.sh",str(id)])
+            #output = subprocess.call(["./test-scripts-test-command.sh",str(id)])
             #print(output)
             #net
-            #output= subprocess.call(["./gVisor-test-command.sh", str(hostname), str(port), str(id)])
+            #output= subprocess.call(["./test-scripts-test-command.sh", str(hostname), str(port), str(id)])
             #print (output)
-            #session = subprocess.Popen(["./gVisor-test-command.sh", str(id)], stdout=PIPE, stderr=PIPE)
+            #session = subprocess.Popen(["./test-scripts-test-command.sh", str(id)], stdout=PIPE, stderr=PIPE)
                 #net
-                #subprocess.Popen(["./gVisor-test-command.sh", str(hostname), str(port), str(id)], stdout=out, stderr=subprocess.STDOUT)
+                #subprocess.Popen(["./test-scripts-test-command.sh", str(hostname), str(port), str(id)], stdout=out, stderr=subprocess.STDOUT)
 
            # print(out)
             try:
@@ -65,7 +79,7 @@ class Worker(Thread):
 
 if __name__ == '__main__':
     if len(sys.argv) < 4:
-        print("Invalid arguements\nUsage: pyhton run_test.py <instances> <runtime:> <test_name in{net, cpu, read, write, mem, mem_unmap}>")
+        print("Invalid arguements\nUsage: python run_test.py <instances> <runtime{fc, runc, runsc-kvm, runsc-ptrace, host}> <test_name in{net, cpu, read, write, mem, mem_unmap}>")
         sys.exit()
 
     instances = int(sys.argv[1])
@@ -73,9 +87,6 @@ if __name__ == '__main__':
     test_name = str(sys.argv[3])
     output_file = runtime +"_"+ test_name + ".out"
     q = Queue(maxsize=0)
-
-
-
 
     #print(threads)
     for i in range(instances):

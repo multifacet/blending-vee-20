@@ -6,8 +6,10 @@
 mv workloads/LLCProbe/cprobe workloads/microbenchmarks/
 
 pip install PyYAML
+sudo apt install sysbench
+sudo apt install iperf3
 
-#move the config file for gVisor, restart docker
+#move the config file for test-scripts, restart docker
 
 mv daemon.json /etc/docker/daemon.json
 sudo systemctl restart docker
