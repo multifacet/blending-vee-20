@@ -52,10 +52,12 @@ class Worker(Thread):
                                             str(runtime), str(hostname), str(port)],
                                            stdout=PIPE, stderr=PIPE)
             elif runtime == 'host':
+                #print("hello")
                 process = subprocess.Popen(["./host.sh", str(test_name),
                                             str(hostname), str(port)],
                                            stdout=PIPE, stderr=PIPE)
             stdout, stderr = process.communicate()
+            print(stderr)
             print(stdout.decode('utf-8').splitlines())
             stdout, stderr
            # with open(output_file, "wb", 0) as out:

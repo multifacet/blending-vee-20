@@ -3,7 +3,7 @@
 TEST_NAME=$1
 IP=$2
 PORT=$3
-PATH=../worloads/microbenchmarks/
+PATH=../workloads/microbenchmarks/
 
 run_multiple_size()
 {
@@ -37,6 +37,7 @@ run_multiple_size()
 # run tests
 case $TEST_NAME in
     "net")
+        #(cd $PATH && ./net.sh $IP $PORT)
         iperf3 -c $IP -p $PORT
         ;;
     "cpu")
