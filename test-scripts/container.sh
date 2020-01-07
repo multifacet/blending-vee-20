@@ -21,15 +21,15 @@ run_multiple_size()
 
          if [[ $FILE = *'memory'* ]];
          then
-             docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER2 ./$FILE $AMOUNT $SIZE 1 $2
+              docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER2 ./$FILE $AMOUNT $SIZE 1 $2
 
          elif [[ $FILE = *'read'* ]];
          then
-             docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER2 ./$FILE $AMOUNT $SIZE
+             docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER2 ./$FILE $AMOUNT $SIZE
              ./drop_cache
 
          else
-             docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER2 ./$FILE $AMOUNT $SIZE
+             docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER2 ./$FILE $AMOUNT $SIZE
 
          fi
 
@@ -41,13 +41,13 @@ run_multiple_size()
 # run tests
 case $TEST_NAME in
     "net")
-        docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER1 iperf3 -c $IP -p $PORT
+         docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER1 iperf3 -c $IP -p $PORT
         ;;
     "cpu")
-        docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER1 sysbench cpu --cpu-max-prime=20000 --threads=1 run
+        docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER1 sysbench cpu --cpu-max-prime=20000 --threads=1 run
         ;;
     "cprobe")
-        docker run --runtime=$RUNTIME -m $MEMORY--rm -it $CONTAINER2  /bin/bash ./probe.sh 10
+        docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER2  /bin/bash ./probe.sh 10
         ;;
     "mem")
         run_multiple_size memory 2

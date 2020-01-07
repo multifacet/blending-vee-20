@@ -1,5 +1,5 @@
 net_test:
-    IP: 128.110.154.173
+    IP: 128.110.154.232
     port: 5201
 fc_setup:
     total_taps: 10

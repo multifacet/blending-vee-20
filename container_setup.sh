@@ -19,7 +19,7 @@ sudo systemctl restart docker
 mv test workloads/microbenchmarks/read_file
 
 #build the benchmark images for memory, LLCProbe, read and write
-docker build -t micro-bench  -f workloads/microbenchmarks/Dockerfile.micro
+docker build -t micro-bench  -f workloads/microbenchmarks/Dockerfile.micro . 
 
 #build image for network and sysbench
-docker build -t net-sysbench  -f workloads/microbenchmarks/Dockerfile.net
+docker build -t net-sysbench  -f workloads/microbenchmarks/Dockerfile.net .

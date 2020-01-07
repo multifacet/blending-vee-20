@@ -37,8 +37,8 @@ run_multiple_size()
 # run tests
 case $TEST_NAME in
     "net")
-        #(cd $PATH && ./net.sh $IP $PORT)
-        iperf3 -c $IP -p $PORT
+        (cd $PATH && ./net.sh $IP $PORT)
+        #iperf3 -c $IP -p $PORT
         ;;
     "cpu")
 	(cd $PATH && ./cpu.sh)
