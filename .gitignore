@@ -11,3 +11,4 @@ fc/output/*
 firecracker
 fio.sh
 perf.data
+test-scripts/*.out
