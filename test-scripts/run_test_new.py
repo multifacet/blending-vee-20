@@ -10,11 +10,8 @@ import multiprocessing
 
 
 def process_output(file, stdout, test):
-    f = open(file, "a+")
-    f.write(str(stdout) + ",")
-    f.close()
 
-    if test == 'net1':
+    if test == 'net':
         subs = 'sender'
         output = stdout.decode('utf-8').splitlines()
         res = list(filter(lambda x: subs in x, output))
@@ -50,7 +47,9 @@ def test(id, runtime, test_name, output_file, hostname, port):
     if len(stderr) == 0:
         print(stdout.decode('utf-8').splitlines())
         # stdout, stderr
-        process_output(output_file, stdout, test_name)
+        #q.put(stdout)
+        #process_output(output_file, stdout, test_name)
+        #return stdout
     else:
         print(stderr)
         sys.exit()
@@ -64,7 +63,7 @@ def main():
     runtime = str(sys.argv[2])
     test_name = str(sys.argv[3])
     output_file = runtime +"_"+ test_name + ".out"
-    #q = Queue()
+    q = multiprocessing.Queue(maxsize=0)
 
     f = open(output_file, "a+")
     f.write("\n"+str(instances)+ " instance(s)\n")
@@ -106,6 +105,11 @@ def main():
         p = multiprocessing.Process(target=test, args=(i, runtime, test_name, output_file, hostname, port))
         jobs.append(p)
         p.start()
+        process_output(output_file, q.get(), test_name)
+
+
+    for job in jobs:
+        job.join()
 
     logging.info('Done!')
 

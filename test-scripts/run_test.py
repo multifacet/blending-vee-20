@@ -23,12 +23,17 @@ class Worker(Thread):
             #print(res[0].split("  "))
             res = list(filter(lambda x: "/" in x, res[0].split("  ")))
             #print(res[0])
-            f = open(output_file, "a+")
+            f = open(file, "a+")
             f.write(str(res[0]) + ",")
             f.close()
-
-
-        return
+        elif test == 'cpu':
+            f = open(file, "a+")
+            f.write(str(stdout) + "\n")
+            f.close()
+        else:
+            f = open(file, "a+")
+            f.write(str(stdout) + "\n")
+            f.close()
 
     def run(self):
         done = False
@@ -73,7 +78,7 @@ class Worker(Thread):
             if len(stderr) ==0:
                 print(stdout.decode('utf-8').splitlines())
                 #stdout, stderr
-               # self.process_output(output_file, stdout, test_name)
+                self.process_output(output_file, stdout, test_name)
             else:
                 print(stderr)
                 sys.exit()
@@ -112,23 +117,26 @@ if __name__ == '__main__':
     f.close()
 
     #print(threads)
+    threads = []
     for i in range(instances):
         worker = Worker(q)
         worker.daemon = True  # setting threads as "daemon" allows main program to
         # exit eventually even if these dont finish
         # correctly.
+
         worker.start()
-        #threads.append(worker)
+        threads.append(worker)
+        #
 
     count = 0
     for i in range(instances):
-        q.put((count, runtime, test_name, output_file))
+        q.put((count, runtime, test_name,  output_file))
         count = count + 1
 
     #wait until the queue has been processed
     q.join()
-   
-  # for worker in threads:
-    #    worker.join()
+
+   #for worker in threads:
+    #   worker.join()
 
     logging.info('Done!')

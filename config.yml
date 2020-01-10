@@ -1,6 +1,6 @@
 net_test:
     IP: 128.110.154.232
-    port: 5201
+    port: 5202
 fc_setup:
     total_taps: 10
     network_interface: eno49
