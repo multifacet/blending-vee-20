@@ -41,8 +41,8 @@ case $TEST_NAME in
         #iperf3 -c $IP -p $PORT
         ;;
     "cpu")
-	(cd $PATH && ./cpu.sh)
-	#sysbench cpu --cpu-max-prime=20000 --threads=1 run
+	    (cd $PATH && ./cpu.sh)
+	    #sysbench cpu --cpu-max-prime=20000 --threads=1 run
         ;;
     "cprobe")
         (cd $PATH && ./probe.sh 10)

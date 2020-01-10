@@ -15,8 +15,20 @@ class Worker(Thread):
         Thread.__init__(self)
         self.queue = queue
 
-    def process_output(self, file, stdout):
-        return ""
+    def process_output(self, file, stdout, test):
+        if test == 'net':
+            subs = 'sender'
+            output = stdout.decode('utf-8').splitlines()
+            res = list(filter(lambda x: subs in x, output))
+            #print(res[0].split("  "))
+            res = list(filter(lambda x: "/" in x, res[0].split("  ")))
+            #print(res[0])
+            f = open(output_file, "a+")
+            f.write(str(res[0]) + ",")
+            f.close()
+
+
+        return
 
     def run(self):
         done = False
@@ -57,10 +69,15 @@ class Worker(Thread):
                                             str(hostname), str(port)],
                                            stdout=PIPE, stderr=PIPE)
             stdout, stderr = process.communicate()
-            print(stderr)
-            print(stdout.decode('utf-8').splitlines())
-            stdout, stderr
-           # with open(output_file, "wb", 0) as out:
+
+            if len(stderr) ==0:
+                print(stdout.decode('utf-8').splitlines())
+                #stdout, stderr
+               # self.process_output(output_file, stdout, test_name)
+            else:
+                print(stderr)
+                sys.exit()
+            # with open(output_file, "wb", 0) as out:
             #    subprocess.Popen(["./test-scripts-test-command.sh", str(id)], stdout=out, stderr=subprocess.STDOUT)
             #cpu/fio
             #output = subprocess.call(["./test-scripts-test-command.sh",str(id)])
@@ -90,6 +107,10 @@ if __name__ == '__main__':
     output_file = runtime +"_"+ test_name + ".out"
     q = Queue(maxsize=0)
 
+    f = open(output_file, "a+")
+    f.write("\n"+str(instances)+ " instance(s)\n")
+    f.close()
+
     #print(threads)
     for i in range(instances):
         worker = Worker(q)
@@ -110,4 +131,4 @@ if __name__ == '__main__':
   # for worker in threads:
     #    worker.join()
 
-    #logging.info('Done!')
+    logging.info('Done!')
