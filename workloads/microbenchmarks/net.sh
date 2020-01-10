@@ -1,1 +1,1 @@
-iperf3 -c $1 -p $2
+./iperf3 -c $1 -p $2
