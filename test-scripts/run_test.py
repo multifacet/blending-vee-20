@@ -78,7 +78,7 @@ class Worker(Thread):
             if len(stderr) ==0:
                 print(stdout.decode('utf-8').splitlines())
                 #stdout, stderr
-                self.process_output(output_file, stdout, test_name)
+                #self.process_output(output_file, stdout, test_name)
             else:
                 print(stderr)
                 sys.exit()

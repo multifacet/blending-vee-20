@@ -41,7 +41,8 @@ run_multiple_size()
 # run tests
 case $TEST_NAME in
     "net")
-         docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER1 iperf3 -c $IP -p $PORT
+	 echo "hello"   
+         docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER1 iperf3 -c $IP -p $PORT >> test.out
         ;;
     "cpu")
         docker run --runtime=$RUNTIME -m $MEMORY --rm -it $CONTAINER1 sysbench cpu --cpu-max-prime=20000 --threads=1 run

@@ -69,12 +69,14 @@ node* init_buffer(node** buff, unsigned cache_size_kb) {
     aligned_size_kb = aligned_size_kb << 1;
   }
 
-  PINFO("Buffer size: %u KB, Aligned at: %u KB\n", cache_size_kb, aligned_size_kb);
+  PINFO("Buffer size: %u KB, Aligned at: %u KB, cache_size: %u\n", cache_size_kb, aligned_size_kb, cache_size);
   posix_memalign((void**) buff, aligned_size_kb * ONE_KB_BYTES, cache_size);
 
   struct node *array = (struct node*) *buff;
   array_nodes =  cache_size / sizeof(struct node);
   stride_nodes = WORD_SIZE / sizeof(struct node);
+  
+  PINFO("array_nodes: %d, strides: %d\n", array_nodes, stride_nodes);
 
   for (i = 0; i < array_nodes; i += stride_nodes)
     array[i].next = array + i;
